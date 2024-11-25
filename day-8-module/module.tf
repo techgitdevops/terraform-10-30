@@ -1,10 +1,18 @@
 module "dev" {
   source = "../day-1"
-  ami = "ami-012967cc5a8c9f891"
-  instance_type = "t2.medium"
-  key_name = "virginiakey"
-  az = "us-east-1a"
+  ami = "ami-0c80e2b6ccb9ad6d1"
+  instance_type = "t2.micro"
+  key_name = "ohiokey"
+  az = "us-east-2a"
   
   
+  
+}
+resource "aws_s3_bucket" "name" {
+  bucket = "sonusunnybucket"
+  
+}
+provider "aws" {
+  region = "us-east-2"
   
 }
