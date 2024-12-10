@@ -22,3 +22,9 @@ variable "az" {
     default = ""
   
 }
+variable "aws_s3_bucket" {
+    description = "creating s3 bucket"
+    type = string
+    default = ""
+  
+}

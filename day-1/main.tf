@@ -5,3 +5,6 @@ resource "aws_instance" "first" {
     availability_zone = var.az
   
 }
+resource "aws_s3_bucket" "name" {
+    bucket = var.aws_s3_bucket
+}

@@ -1,30 +1,30 @@
 resource "aws_vpc" "dev_local" {
-    cidr_block = "10.0.0.0/16"
+    cidr_block = var.vpc_cidr_block
     tags = {
-      name="projectk"
+      name=var.vpc_name
     }
   
 }
 resource "aws_subnet" "public" {
     vpc_id = aws_vpc.dev_local.id
-    cidr_block = "10.0.0.0/24"
+    cidr_block = var.public_subnet_cidr_block
     tags = {
-      name="public"
+      name=var.public_subnet_name
     }
   
 }
 resource "aws_subnet" "private" {
   vpc_id = aws_vpc.dev_local.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.private_subnet_cidr_block
   tags = {
-    name="private"
+    name=var.private_subnet_name
   }
   
 }
 resource "aws_internet_gateway" "ig1" {
     vpc_id = aws_vpc.dev_local.id
     tags = {
-      name="ig1"
+      name=var.internet_gateway_name
     }
   
 }
@@ -36,7 +36,7 @@ resource "aws_nat_gateway" "nat" {
   subnet_id = aws_subnet.private.id
   allocation_id = aws_eip.eip.id
   tags = {
-    name="nat"
+    name=var.nat_gateway_name
   }
 
   
